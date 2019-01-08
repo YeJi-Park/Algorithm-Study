@@ -1,13 +1,13 @@
-#include <iostream>
-#include <string>
+/*
+@Author		YJ Park
+@Date		19. 01. 08
+@Descript	Programmers 알고리즘 해시 #01 sort로 풀이
+*/
+
 #include <vector>
 #include <algorithm>
+
 using namespace::std;
-/*
-	@Author		YJ Park
-	@Date		19. 01. 08
-	@Descript	Programmers 알고리즘 해시 #01 sort 
-*/
 
 string solution(vector<string> participant, vector<string> completion) {
 	sort(participant.begin(), participant.end());
