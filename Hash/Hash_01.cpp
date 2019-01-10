@@ -1,7 +1,7 @@
 /*
 @Author		YJ Park
 @Date		19. 01. 08
-@Descript	Programmers 알고리즘 해시 #01 sort로 풀이
+@Descript	Programmers Hash #01 using sort
 */
 
 #include <vector>
