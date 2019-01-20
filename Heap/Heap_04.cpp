@@ -9,14 +9,11 @@
 #include <functional>
 #include <deque>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
 vector<int> solution(vector<string> operations) {
 	vector<int> answer;
-	//priority_queue<int> min_heap;
-	//priority_queue<int> max_heap;
 	deque<int> dq;
 
 	answer.push_back(0); answer.push_back(0);
@@ -27,22 +24,16 @@ vector<int> solution(vector<string> operations) {
 
 		if (op[0] == 'I') {
 			int data = stoi(op.substr(2, size - 1));
-			//min_heap.push(data);
 			dq.push_back(data);
-			cout << data << "³ÖÀ½" << endl;
 			sort(dq.begin(), dq.end(), greater<int>());
 		}
 		else {
 			if (dq.empty()) continue;
 
-			if (op[2] == '-') {
-				cout << dq.back() << "³ª¿È" << endl;
+			if (op[2] == '-') 
 				dq.pop_back();
-			}
-			else {
-				cout << dq.front() << "³ª¿È" << endl;
+			else 
 				dq.pop_front();
-			}
 		}
 	}
 	
@@ -52,8 +43,4 @@ vector<int> solution(vector<string> operations) {
 	}
 
 	return answer;
-}
-
-int main() {
-
 }

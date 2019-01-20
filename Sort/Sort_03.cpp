@@ -26,7 +26,3 @@ int solution(vector<int> citations) {
 
 	return answer;
 }
-
-int main() {
-	cout << solution({22, 42});
-}
