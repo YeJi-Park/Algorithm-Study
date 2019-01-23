@@ -2,14 +2,18 @@
 @Author		YJ Park
 @Date		19. 01. 22
 @Descript	Programmers Greedy #03
+효율성 테스트 #1, #3 통과 못해서
+수정해야 될 것 같음
+=> 굳이 스택, 디큐로 구현해야 할 필요 없으면
+벡터에 min, max idx를 저장해도 될 것 같은??
 */
+
 #include <string>
 #include <vector>
 #include <stack>
 #include <deque>
 #include <algorithm>
 #include <functional>
-#include <iostream>
 
 using namespace std;
 
@@ -21,23 +25,16 @@ int solution(vector<int> people, int limit) {
 	sort(people.begin(), people.end(), greater<int>());
 
 	int size = people.size();
-	for (int i = 0; i < size; i++) 
+	for (int i = 0; i < people.size(); i++)
 		dq.push_back(people[i]);
-	
-	//while (!dq.empty()) {
-	//	int heaviest = dq.front(); dq.pop_front();
 
-	//	if (dq.empty()) {
-	//		answer++;
-	//		break;
-	//	}
-	while (true){
+	while (!dq.empty()) {
+		int heaviest = dq.front(); dq.pop_front();
+
 		if (dq.empty()) {
 			answer++;
 			break;
 		}
-
-		int heaviest = dq.front(); dq.pop_front();
 
 		int left = limit - heaviest;
 		int lightest = dq.back();
@@ -54,7 +51,7 @@ int solution(vector<int> people, int limit) {
 		else {
 			dq.pop_back();
 			st.push(lightest);
-			
+
 			while (true) {
 				if (dq.empty()) break;
 
@@ -65,7 +62,7 @@ int solution(vector<int> people, int limit) {
 					dq.pop_back();
 					st.push(temp);
 
-					if (lightest < temp) 
+					if (lightest < temp)
 						lightest = temp;
 				}
 			}
@@ -75,14 +72,14 @@ int solution(vector<int> people, int limit) {
 			while (!st.empty()) {
 				int temp = st.top();
 				if (temp == lightest) {
-					if(isChecked)
+					if (isChecked)
 						dq.push_back(st.top());
-					else 
+					else
 						isChecked = true;
 				}
-				else 
-					dq.push_back(st.top()); 
-				
+				else
+					dq.push_back(st.top());
+
 				st.pop();
 			}
 
@@ -91,8 +88,4 @@ int solution(vector<int> people, int limit) {
 	}
 
 	return answer;
-}
-
-int main() {
-	cout << solution({ 70,50,80,50 },100);
 }

@@ -2,6 +2,7 @@
 @Author		YJ Park
 @Date		19. 01. 22
 @Descript	Programmers Greedy #03
+			>> 좀 더 효율적으로 푸는 방법 생각해보기
 */
 
 #include <string>
