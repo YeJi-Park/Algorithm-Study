@@ -1,7 +1,7 @@
 /*
 @Author		YJ Park
 @Date		19. 01. 26
-@Descript	Programmers Dinamic Programming #02
+@Descript	Programmers Dynamic Programming #02
 */
 
 #include <string>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//memoizationÀ» À§ÇÑ ¹è¿­
+//memoizationÃ€Â» Ã€Â§Ã‡Ã‘ Â¹Ã¨Â¿Â­
 long long memo[81];
 
 long long fibonacci(int n) {
