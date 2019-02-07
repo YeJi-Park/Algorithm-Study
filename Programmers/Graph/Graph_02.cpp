@@ -32,16 +32,6 @@ int solution(int n, vector<vector<int>> results) {
 		int elem_num = lose[i].size();
 		int visit = 0;
 
-		for (auto j : lose[i]) {
-			visited[j] = true;
-			visit++;
-
-			for (auto k : lose[j]) {
-				if (lose[i].insert(k).second)
-					elem_num++;
-			}
-		}
-
 		while (elem_num > visit) {
 			for (auto j : lose[i]) {
 				if (visited[j]) continue;
@@ -63,16 +53,6 @@ int solution(int n, vector<vector<int>> results) {
 		vector<bool> visited(n + 1, false);
 		int elem_num = win[i].size();
 		int visit = 0;
-
-		for (auto j : win[i]) {
-			visited[j] = true;
-			visit++;
-
-			for (auto k : win[j]) {
-				if (win[i].insert(k).second)
-					elem_num++;
-			}
-		}
 
 		while (elem_num > visit) {
 			for (auto j : win[i]) {
