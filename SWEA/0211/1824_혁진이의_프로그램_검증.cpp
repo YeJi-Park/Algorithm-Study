@@ -31,71 +31,8 @@ vector<string> cmd;
 
 bool DFS(int x, int y, int dir, int mem) {
 	if (cmd[x][y]  == '@') return true;
-	else if (cmd[x][y]  == '<') {
-		if (y == 0) y = C - 1;
-		else y--;
 
-		if (visit[x][y][3][mem]) return false;
-		else {
-			visit[x][y][3][mem] = true;
-			return DFS(x, y, 3, mem);
-		}
-	}
-	else if (cmd[x][y]  == '>') {
-		if (y == C - 1) y = 0;
-		else y++;
-
-		if (visit[x][y][2][mem]) return false;
-		else {
-			visit[x][y][3][mem] = true;
-			return DFS(x, y, 2, mem);
-		}
-	}
-	else if (cmd[x][y]  == '^') {
-		if (x == 0) x = R - 1;
-		else x--;
-
-		if (visit[x][y][1][mem]) return false;
-		else {
-			visit[x][y][1][mem] = true;
-			return DFS(x, y, 1, mem);
-		}
-	}
-	else if (cmd[x][y]  == 'v') {
-		if (x == R - 1) x = 0;
-		else x++;
-
-		if (visit[x][y][0][mem]) return false;
-		else {
-			visit[x][y][0][mem] = true;
-			return DFS(x, y, 0, mem);
-		}
-	}
-	else if (cmd[x][y]  == '_') {
-		if (mem == 0) dir = 2;
-		else dir = 3;
-
-		y = (y + dy[dir] + C) % C;
-
-		if (visit[x][y][dir][mem]) return false;
-		else {
-			visit[x][y][dir][mem] = true;
-			return DFS(x, y, dir, mem);
-		}
-	}
-	else if (cmd[x][y]  == '|') {
-		if (mem == 0) dir = 0;
-		else dir = 1;
-
-		x = (x + dx[dir] + R) % R;
-
-		if (visit[x][y][dir][mem]) return false;
-		else {
-			visit[x][y][dir][mem] = true;
-			return DFS(x, y, dir, mem);
-		}
-	}
-	else if (cmd[x][y] == '?') {
+	if (cmd[x][y] == '?') {
 		bool check = false;
 
 		for (int i = 0; i < 4; i++) {
@@ -110,7 +47,6 @@ bool DFS(int x, int y, int dir, int mem) {
 			}
 		}
 		return check;
-	
 	}
 	else {
 		if (cmd[x][y] >= '0' && cmd[x][y] <= '9') {
@@ -123,6 +59,18 @@ bool DFS(int x, int y, int dir, int mem) {
 		else if (cmd[x][y] == '-') {
 			mem--;
 			if (mem < 0) mem = 15;
+		}
+		else if (cmd[x][y] == '<') dir = 3;
+		else if (cmd[x][y] == '>') dir = 2;
+		else if (cmd[x][y] == '^') dir = 1;
+		else if (cmd[x][y] == 'v') dir = 0;
+		else if (cmd[x][y] == '_') {
+			if (mem) dir = 3;
+			else dir = 2;
+		}
+		else if (cmd[x][y] == '|') {
+			if (mem) dir = 1;
+			else dir = 0;
 		}
 
 		x = (x + dx[dir] + R) % R;
