@@ -1,7 +1,7 @@
 /*
 @Author     YJ Park
 @Date       19. 02. 28
-@Descript   BOJ [#3499 퍼펙트 셔플]
+@Descript   SWEA [#3499 퍼펙트 셔플]
 			
 			Q FIFO이므로 2개의 Q 사용해서 절반씩 넣고
 			번갈아가면서 POP하면 셔플됨
