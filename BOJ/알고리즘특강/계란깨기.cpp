@@ -49,6 +49,7 @@ void egg_cnt(pair<int, int> temp_egg[8]) {
 //	egg_cnt(temp_egg);
 //}
 //
+
 void crash(pair<int, int> temp_egg[8], int from) {
 	if (from == N) {
 		egg_cnt(temp_egg);
