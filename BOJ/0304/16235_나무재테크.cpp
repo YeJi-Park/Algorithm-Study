@@ -1,6 +1,6 @@
 /*
 @Author     YJ Park
-@Date       19. 03. 04
+@Date       19. 03. 03
 @Descript   BOJ [#16235 나무재테크]
 */
 
@@ -37,6 +37,7 @@ void year() {
 
 	vector<int> dead_list;
 	vector < pair<int, int> > grow;
+	vector<tree> alive_list;
 
 	int size = v.size();
 	for (int i = 0; i < size; i++) {
@@ -44,6 +45,8 @@ void year() {
 		if (map[x][y] >= v[i].age) {
 			map[x][y] -= v[i].age;
 			v[i].age++;
+			alive_list.push_back(v[i]);
+
 			if (!(v[i].age % 5))
 				grow.push_back(pair<int, int>(x, y));
 		}
@@ -54,7 +57,6 @@ void year() {
 		tree temp_tree = v[dead_list[i]];
 		int x = temp_tree.x; int y = temp_tree.y;
 		map[x][y] += (temp_tree.age / 2);
-		v.erase(v.begin() + dead_list[i]);
 	}
 
 	for (int i = 0; i < grow.size(); i++) {
@@ -64,7 +66,7 @@ void year() {
 				tree new_tree;
 				new_tree.x = tx; new_tree.y = ty;
 				new_tree.age = 1;
-				v.push_back(new_tree);
+				alive_list.push_back(new_tree);
 			}
 		}
 	}
@@ -74,6 +76,9 @@ void year() {
 			map[i][j] += fert[i][j];
 		}
 	}
+
+	v.clear();
+	v = alive_list;
 }
 
 int main() {

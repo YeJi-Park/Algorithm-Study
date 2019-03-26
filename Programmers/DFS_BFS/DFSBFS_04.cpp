@@ -10,6 +10,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <unordered_set>
 
 using namespace std;
 
@@ -18,6 +19,8 @@ vector<string> answer;
 
 bool dfs(vector<bool> &visited, vector<vector<string> > &tickets, int depth, string from) {
 	answer.push_back(from);
+	unordered_set
+	
 
 	// tickets 갯수만큼 다 경로 돌았을 때
 	if (depth == ::size) {
@@ -31,7 +34,8 @@ bool dfs(vector<bool> &visited, vector<vector<string> > &tickets, int depth, str
 				if (flag)
 					return true;
 				else
-				{	// tickets 다 쓸 수 없는 경우 다른 경로 찾기
+				{	// tickets 다 쓸 수 없는 경우 다른 경
+					로 찾기
 					visited[i] = false;
 					answer.pop_back();
 				}
