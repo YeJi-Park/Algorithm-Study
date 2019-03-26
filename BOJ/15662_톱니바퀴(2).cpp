@@ -1,9 +1,9 @@
 /*
 @Author		YJ Park
 @Date		19. 03. 26
-@Descript	BOJ [#15662 Åé´Ï¹ÙÄû(2)]
+@Descript	BOJ [#15662 í†±ë‹ˆë°”í€´(2)]
 
-			±×³É Åé´Ï °¹¼ö¶û Ãâ·Â¸¸ Á¶Á¤¤·¤µ¤·
+			ê·¸ëƒ¥ í†±ë‹ˆ ê°¯ìˆ˜ë‘ ì¶œë ¥ë§Œ ì¡°ì •ã…‡ã……ã…‡
 */
 
 #include <iostream>
@@ -18,7 +18,7 @@ int start[1001];
 int cmd[1000][2];
 int K, T;
 
-// 1 ¿ŞÂÊ¿¡¼­ ¿È, 0 ¿À¸¥ÂÊ¿¡¼­ ¿È => ¿¬¼âÀûÀ¸·Î Åé´Ï µ¹¸®±â
+// 1 ì™¼ìª½ì—ì„œ ì˜´, 0 ì˜¤ë¥¸ìª½ì—ì„œ ì˜´ => ì—°ì‡„ì ìœ¼ë¡œ í†±ë‹ˆ ëŒë¦¬ê¸°
 void rotate(int gear_num, int dir, bool flag) {
 	if (flag) {
 		if (gear_num < T &&
@@ -35,10 +35,10 @@ void rotate(int gear_num, int dir, bool flag) {
 	else start[gear_num] = (start[gear_num] + 1) % 8;
 }
 
-// Ã³À½ µ¹¸®´Â Åé´Ï¹ÙÄû´Â ¾çÂÊ ´Ù È®ÀÎÇØ¾ßÇÔ
+// ì²˜ìŒ ëŒë¦¬ëŠ” í†±ë‹ˆë°”í€´ëŠ” ì–‘ìª½ ë‹¤ í™•ì¸í•´ì•¼í•¨
 void rotate(int gear_num, int dir) {
 
-	// ¾çÂÊ¿¡ Åé´Ï¹ÙÄû ÀÖ°í µ¹¸± ¼ö ÀÖÀ¸¸é ¿¬¼âÀûÀ¸·Î Åé´Ï¹ÙÄûµé È®ÀÎ
+	// ì–‘ìª½ì— í†±ë‹ˆë°”í€´ ìˆê³  ëŒë¦´ ìˆ˜ ìˆìœ¼ë©´ ì—°ì‡„ì ìœ¼ë¡œ í†±ë‹ˆë°”í€´ë“¤ í™•ì¸
 	if (gear_num < T &&
 		gear[gear_num][(start[gear_num] + RIGHT) % 8] != gear[gear_num + 1][(start[gear_num + 1] + LEFT) % 8])
 		rotate(gear_num + 1, -dir, true);
@@ -46,7 +46,7 @@ void rotate(int gear_num, int dir) {
 	if (gear_num > 1 && gear[gear_num][(start[gear_num] + LEFT) % 8] != gear[gear_num - 1][(start[gear_num - 1] + RIGHT) % 8])
 		rotate(gear_num - 1, -dir, false);
 
-	// ´Ù µ¹¸®°í ³ª¸é Åé´Ï¹ÙÄûÀÇ ½ÃÀÛ(12½Ã ¹æÇâ) Á¶Á¤
+	// ë‹¤ ëŒë¦¬ê³  ë‚˜ë©´ í†±ë‹ˆë°”í€´ì˜ ì‹œì‘(12ì‹œ ë°©í–¥) ì¡°ì •
 	if (dir == 1) start[gear_num] = (start[gear_num] - 1 + 8) % 8;
 	else start[gear_num] = (start[gear_num] + 1) % 8;
 }
